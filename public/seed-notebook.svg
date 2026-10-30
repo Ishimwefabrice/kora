@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-label="Seeded Kimironko notebook page">
-  <rect width="640" height="800" fill="#fbf3e6"/>
-  <line x1="72" y1="0" x2="72" y2="800" stroke="#e3b6a4"/>
-  <text x="96" y="72" font-family="Georgia, serif" font-size="28" fill="#1c1612">Iduka rya Mama Uwase</text>
-  <text x="96" y="104" font-family="Georgia, serif" font-size="16" fill="#4a3f36">Kimironko · Ukwakira 2026</text>
-  <text x="96" y="180" font-family="Georgia, serif" font-size="22" fill="#1c1612">Inyanya 3kg</text>
-  <text x="480" y="180" font-family="Georgia, serif" font-size="22" fill="#1c1612">4 500</text>
-  <text x="96" y="240" font-family="Georgia, serif" font-size="22" fill="#1c1612">Amavuta 1L</text>
-  <text x="500" y="240" font-family="Georgia, serif" font-size="22" fill="#8a3b2a">???</text>
-  <text x="96" y="300" font-family="Georgia, serif" font-size="22" fill="#1c1612">Itunguru 2kg</text>
-  <text x="480" y="300" font-family="Georgia, serif" font-size="22" fill="#1c1612">2 000</text>
-  <text x="96" y="360" font-family="Georgia, serif" font-size="22" fill="#1c1612">Isabune</text>
-  <text x="520" y="360" font-family="Georgia, serif" font-size="22" fill="#1c1612">800</text>
-  <text x="96" y="420" font-family="Georgia, serif" font-size="22" fill="#1c1612">Ubahe Ukwakira</text>
-  <text x="460" y="420" font-family="Georgia, serif" font-size="22" fill="#1c1612">35 000</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-label="Seeded Kimironko ledger">
+  <rect width="640" height="800" fill="#121a2c"/>
+  <rect width="8" height="800" fill="#22d3ee"/>
+  <text x="40" y="72" font-family="Arial, sans-serif" font-size="28" fill="#e8eef8">Iduka rya Mama Uwase</text>
+  <text x="40" y="104" font-family="Arial, sans-serif" font-size="16" fill="#8b9bb8">Kimironko · Ukwakira 2026</text>
+  <text x="40" y="180" font-family="Consolas, monospace" font-size="20" fill="#e8eef8">Inyanya 3kg</text>
+  <text x="460" y="180" font-family="Consolas, monospace" font-size="20" fill="#3ddc97">4 500</text>
+  <text x="40" y="240" font-family="Consolas, monospace" font-size="20" fill="#e8eef8">Amavuta 1L</text>
+  <text x="500" y="240" font-family="Consolas, monospace" font-size="20" fill="#ff5c8a">???</text>
+  <text x="40" y="300" font-family="Consolas, monospace" font-size="20" fill="#e8eef8">Itunguru 2kg</text>
+  <text x="460" y="300" font-family="Consolas, monospace" font-size="20" fill="#3ddc97">2 000</text>
+  <text x="40" y="360" font-family="Consolas, monospace" font-size="20" fill="#e8eef8">Isabune</text>
+  <text x="500" y="360" font-family="Consolas, monospace" font-size="20" fill="#3ddc97">800</text>
+  <text x="40" y="420" font-family="Consolas, monospace" font-size="20" fill="#e8eef8">Ubahe Ukwakira</text>
+  <text x="440" y="420" font-family="Consolas, monospace" font-size="20" fill="#3ddc97">35 000</text>
 </svg>
