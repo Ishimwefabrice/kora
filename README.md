@@ -2,71 +2,80 @@
 
 The last meter of a Rwandan stall is not an API. It is a paper notebook.
 
-Kora photographs that page, reads it with **NVIDIA Nemotron 3.5 Super VL** on **Nebius Token Factory**, and hands the owner a bilingual WhatsApp kit. Unclear amounts stay blank. Nothing sends until a person taps YES.
+Kora photographs that page, reads it with **NVIDIA Nemotron** on **Nebius Token Factory**, and hands the owner a bilingual WhatsApp kit plus an optional PayPal sandbox draft. Unclear amounts stay blank. Nothing sends until a person taps YES.
 
-Built for the [Nebius x NVIDIA Global AI Hackathon](https://nebiusglobalaihackathon.devpost.com) · **Best Apps and Agents**.
+This repo is the editable product for:
 
-## Why this exists
+- Nebius x NVIDIA Global AI Hackathon (Best Apps and Agents)
+- PayPal AI Hackathon (PayPal draft after YES)
 
-Kimironko still runs on an igitabo. So do rent books. Chatbots that invent a tomato price are a liability. The winning pattern from serious agent work is the same one plants and archives already learned: the model proposes, **code seals**, a human is the last meter.
+See `docs/SUBMISSIONS.md` for the other Devpost entries and what cannot be this website.
 
-Kora is that pattern for a stall.
+## Who it is for
 
-## What it does
+Stall owners and landlords who still run numbers in an igitabo. Judges can use the public Kimironko seed without an account.
 
-1. **Scout** (`nvidia/Nemotron-3.5-Super-VL` on Token Factory) reads the photo. If the oil line is `???`, `amountRwf` is null.
-2. **Ledge** is not a model. TypeScript refuses amounts below 0.72 confidence, missing figures, or numbers over 5,000,000 RWF. Gemini-style “I think it’s 4,000” cannot write the cell.
-3. **Market** (optional Tavily) may look up public Kigali price pages for a blank line. It writes a note. It still does not fill the amount.
-4. **Stella** (`nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B`) writes Kinyarwanda and English paste text from the **sealed** ledger only.
-5. **YES** records consent. Kora still does not send money or autopost.
+## Architecture
 
-Judges can open the already-finished public seed without a Token Factory key:
+```
+Browser  →  Next.js 15 (App Router)
+                ├─ cookie session (jose, httpOnly)
+                ├─ Prisma / SQLite  (data/kora.db)
+                ├─ Ledge gate       (lib/gate.ts — amounts)
+                ├─ Token Factory    (Nemotron VL + Nano)
+                └─ PayPal sandbox   (draft invoice only)
+```
 
-`/kit/kimironko-mama-uwase`
+Roles: **guest** (seed kit), **owner** (own kits), **admin** (`ADMIN_EMAIL`).
 
-Mama Uwase’s stall is a seeded notebook, not a customer. Kora never messages her.
+Edit the product here:
 
-## Stack
-
-| Piece | Job |
+| You want to change | File |
 | --- | --- |
-| Nebius Token Factory `https://api.tokenfactory.nebius.com/v1/` | OpenAI-compatible inference |
-| `nvidia/Nemotron-3.5-Super-VL` | Scout: document / notebook vision |
-| `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` | Stella: bilingual kit, cheap and fast |
-| Deterministic gate in `lib/gate.ts` | Ledge: the only writer of proven amounts |
-| Tavily Search (optional) | Public-page grounding for blank lines |
-| Next.js 15 | App, observatory, seed kit |
+| Colors | `app/globals.css` (`:root` tokens) |
+| Copy / landing | `app/page.tsx` |
+| Amount rules | `lib/gate.ts` |
+| Vision / models | `lib/nebius.ts` |
+| Database tables | `prisma/schema.prisma` |
+| Seed notebook | `lib/seed.ts` |
 
 ## Run
 
 ```bash
 npm install
-copy .env.example .env.local
-# put NEBIUS_API_KEY in .env.local for live photos
+copy .env.example .env
+npm run db:push
+npm run db:seed
+npm test
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open http://localhost:3000
 
-- **Open the Kimironko seed** works with no key. Use this for the demo video if credits are tight.
-- **Read my page** needs `NEBIUS_API_KEY` from Token Factory. Hackathon credits: activation code `NEBIUS-DEVPOST-GLOBAL26`.
+Local demo account (development only): `owner@kora.local` / `KoraStall!2026`
 
-Health check: [http://localhost:3000/api/health](http://localhost:3000/api/health) reports whether Token Factory and Tavily keys are present. It never prints them.
+- Public seed: `/kit/kimironko-mama-uwase`
+- Live photo read: log in, then home → Read my page (`NEBIUS_API_KEY` in `.env`)
+- YES: records consent and may create a PayPal **draft**. It does not send money.
 
 ```bash
 npm run build
 npm start
 ```
 
-## Observatory
+## Security
 
-Every kit shows model id, Token Factory endpoint, token counts, and latency. Seeded numbers are labelled `Seeded kit`. Live runs are labelled `Live Token Factory`.
+- Passwords hashed with bcrypt.
+- Sessions in httpOnly cookies.
+- API keys only on the server.
+- Login / register / extract rate-limited.
+- Image uploads capped and type-checked.
+- SQL via Prisma parameterized queries.
+- The public seed cannot be deleted.
 
-## Token Factory notes (feedback)
+## Tests
 
-- OpenAI-compatible `chat.completions` with `response_format: json_object` is the whole integration. Switching Scout from VL to another Nemotron is a model id change.
-- Super VL is the product. A notebook is an image. Nano is the paste writer so VL spend stays on the page, not on copy.
-- Live extraction is fail-closed: no key, no live call. The seed still loads. That is deliberate so a blog link cannot burn credits.
+`npm test` covers amount sealing and account validation.
 
 ## License
 

@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String   @default("owner")
+  createdAt    DateTime @default(now())
+  kits         Kit[]
+}
+
+model Kit {
+  id           String   @id
+  userId       String?
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt    DateTime
+  shopName     String
+  shopNameRw   String
+  place        String
+  source       String
+  notes        String   @default("")
+  lines        String
+  whatsappRw   String
+  whatsappEn   String
+  observatory  String
+  approved     Boolean  @default(false)
+  approvedAt   DateTime?
+  paypal       String?
+  publicSeed   Boolean  @default(false)
+}
+
+model AuditEvent {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  userId    String?
+  kitId     String?
+  action    String
+  detail    String   @default("")
+}

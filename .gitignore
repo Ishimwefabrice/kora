@@ -5,6 +5,8 @@ out
 .env.local
 .env*.local
 data/*.json
+data/*.db
+data/*.db-journal
 !data/.gitkeep
 .DS_Store
 *.log

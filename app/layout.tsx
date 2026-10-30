@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
 
+const title = "Kora — the last meter of the notebook";
+const description =
+  "Photograph a Rwandan shop or rent book. NVIDIA Nemotron on Nebius Token Factory reads it. Code leaves unproven amounts blank. Nothing sends until you tap YES.";
+
 export const metadata: Metadata = {
-  title: "Kora — the last meter of the notebook",
-  description:
-    "Photograph a Rwandan shop or rent book. NVIDIA Nemotron on Nebius Token Factory reads it. Code leaves unproven amounts blank. Nothing sends until you tap YES."
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  title,
+  description,
+  openGraph: { title, description, type: "website" },
+  twitter: { card: "summary_large_image", title, description }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,7 +25,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <a className="skip" href="#content">
+          Skip to content
+        </a>
+        <div className="shell">
+          <SiteHeader />
+        </div>
+        <div id="content">{children}</div>
+      </body>
     </html>
   );
 }

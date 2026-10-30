@@ -1,22 +1,35 @@
 {
   "name": "kora",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Kora turns a photographed shop or rent notebook into a bilingual payment kit. NVIDIA Nemotron on Nebius Token Factory does the reading. Code, not the model, owns money and blanks.",
   "scripts": {
     "dev": "next dev --port 3000",
-    "build": "next build",
-    "start": "next start --port 3000"
+    "build": "prisma generate && next build",
+    "start": "next start --port 3000",
+    "test": "tsx --test tests/gate.test.ts tests/validators.test.ts",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "bcryptjs": "^3.0.2",
+    "jose": "^6.1.0",
     "next": "^15.5.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.18.8",
     "@types/react": "^19.1.15",
     "@types/react-dom": "^19.1.9",
+    "prisma": "^6.16.2",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.2"
   },
   "engines": {

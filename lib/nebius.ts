@@ -205,6 +205,8 @@ export async function runFleet(input: ExtractRequest): Promise<Kit> {
 
   return {
     id: randomUUID(),
+    userId: null,
+    publicSeed: false,
     createdAt: new Date().toISOString(),
     shopName: parsed.shopName || "Unnamed stall",
     shopNameRw: parsed.shopNameRw || parsed.shopName || "Iduka",

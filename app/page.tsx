@@ -34,14 +34,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="shell">
-      <header className="top">
-        <div className="mark">
-          Kora<span>.</span>
-        </div>
-        <div className="eyebrow">Nebius Token Factory · NVIDIA Nemotron</div>
-      </header>
-
+    <main className="shell">
       <section className="hero">
         <div>
           <div className="stamp">The last meter has no API</div>
@@ -119,10 +112,10 @@ export default function HomePage() {
       </section>
 
       <footer className="foot">
-        <span>Best Apps and Agents · Nebius x NVIDIA Global AI Hackathon</span>
+        <span>Best Apps and Agents · Nebius x NVIDIA · PayPal AI</span>
         <Link href="/kit/kimironko-mama-uwase">Already-finished seed kit →</Link>
       </footer>
-    </div>
+    </main>
   );
 }
 

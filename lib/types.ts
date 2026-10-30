@@ -24,6 +24,8 @@ export type ObservatoryCall = {
 
 export type Kit = {
   id: string;
+  userId: string | null;
+  publicSeed?: boolean;
   createdAt: string;
   shopName: string;
   shopNameRw: string;
@@ -54,6 +56,7 @@ export type ExtractRequest = {
 export type Health = {
   ok: true;
   product: "kora";
+  database: boolean;
   tokenFactory: boolean;
   tavily: boolean;
   paypal: boolean;

@@ -59,6 +59,8 @@ export function kimironkoSeed(): Kit {
 
   return {
     id: SEED_ID,
+    userId: null,
+    publicSeed: true,
     createdAt: "2026-10-30T07:00:00.000Z",
     shopName: "Mama Uwase stall",
     shopNameRw: "Iduka rya Mama Uwase",

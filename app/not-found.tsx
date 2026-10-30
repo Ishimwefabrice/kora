@@ -2,12 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="shell">
-      <header className="top">
-        <Link className="mark" href="/">
-          Kora<span>.</span>
-        </Link>
-      </header>
+    <main className="shell">
       <h1>That kit is not on the shelf.</h1>
       <p className="lede">Open the Kimironko seed or read a new page.</p>
       <div className="actions">
@@ -15,6 +10,6 @@ export default function NotFound() {
           Back to the stall
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
