@@ -71,6 +71,19 @@ export default async function KitPage({ params }: { params: Promise<{ id: string
         </tbody>
       </table>
 
+      {kit.paypal ? (
+        <div className="yes-bar">
+          <div>
+            <div className="eyebrow">PayPal · {kit.paypal.mode}</div>
+            <div>
+              {kit.paypal.status}
+              {kit.paypal.invoiceId ? ` · ${kit.paypal.invoiceId}` : ""}
+            </div>
+            <div className="lede">{kit.paypal.note}</div>
+          </div>
+        </div>
+      ) : null}
+
       <div className="two">
         <div>
           <div className="eyebrow">WhatsApp · Kinyarwanda</div>

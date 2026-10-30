@@ -216,7 +216,8 @@ export async function runFleet(input: ExtractRequest): Promise<Kit> {
     whatsappEn: kitCopy.whatsappEn,
     observatory,
     approved: false,
-    approvedAt: null
+    approvedAt: null,
+    paypal: null
   };
 }
 

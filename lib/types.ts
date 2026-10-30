@@ -36,6 +36,13 @@ export type Kit = {
   observatory: ObservatoryCall[];
   approved: boolean;
   approvedAt: string | null;
+  paypal: {
+    mode: "sandbox-live" | "seed";
+    status: string;
+    invoiceId: string | null;
+    href: string | null;
+    note: string;
+  } | null;
 };
 
 export type ExtractRequest = {
@@ -49,6 +56,7 @@ export type Health = {
   product: "kora";
   tokenFactory: boolean;
   tavily: boolean;
+  paypal: boolean;
   visionModel: string;
   copyModel: string;
   endpoint: string;

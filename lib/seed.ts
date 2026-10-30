@@ -131,6 +131,7 @@ export function kimironkoSeed(): Kit {
       }
     ],
     approved: false,
-    approvedAt: null
+    approvedAt: null,
+    paypal: null
   };
 }
